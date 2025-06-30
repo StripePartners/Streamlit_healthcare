@@ -40,8 +40,8 @@ tab1, tab2, tab3 = st.tabs(["Survey Analysis", "Patient Forum Analysis", "Integr
 
 with tab1:
     st.header("Survey Analysis")
-    df_survey_pos = pd.read_excel("Healthcare/Internal_GLP1_Healthcare/streamlit_app/data/survey_positive_effect_open_responses.xlsx", sheet_name="Topic description")
-    df_survey_neg = pd.read_excel("Healthcare/Internal_GLP1_Healthcare/streamlit_app/data/survey_negative_effect_open_responses.xlsx", sheet_name="Topic description")
+    df_survey_pos = pd.read_excel("data/survey_positive_effect_open_responses.xlsx", sheet_name="Topic description")
+    df_survey_neg = pd.read_excel("data/survey_negative_effect_open_responses.xlsx", sheet_name="Topic description")
     
     df_survey_pos = df_survey_pos[df_survey_pos["Captured on Reddit"].isin(["yes","no","somewhat"])].copy()
     df_survey_pos = df_survey_pos.sort_values(by=["Size"], ascending=True)
@@ -152,7 +152,7 @@ with tab1:
 
 with tab2:
     st.header("Patient Forum Analysis")
-    df_nlp = pd.read_excel("Healthcare/Internal_GLP1_Healthcare/streamlit_app/data/patient_forum_all_refined_topics.xlsx",sheet_name = "Exact_survey_topics")
+    df_nlp = pd.read_excel("data/patient_forum_all_refined_topics.xlsx",sheet_name = "Exact_survey_topics")
     df_nlp = df_nlp[['Sentiment','New topic description','New_count', 'Paraphrased']]
     df_nlp['Log_count'] = np.log1p(df_nlp['New_count'])
 
@@ -260,8 +260,8 @@ with tab3:
 
 
     # Read survey dataset
-    df_survey_pos = pd.read_excel("Healthcare/Internal_GLP1_Healthcare/streamlit_app/data/topic_ranking_differences.xlsx",sheet_name = "Positive") 
-    df_survey_neg = pd.read_excel("Healthcare/Internal_GLP1_Healthcare/streamlit_app/data/topic_ranking_differences.xlsx",sheet_name = "Negative") 
+    df_survey_pos = pd.read_excel("data/topic_ranking_differences.xlsx",sheet_name = "Positive") 
+    df_survey_neg = pd.read_excel("data/topic_ranking_differences.xlsx",sheet_name = "Negative") 
 
     # Select sentiment
     sentiment_option = st.selectbox(
